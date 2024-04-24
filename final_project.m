@@ -72,5 +72,31 @@
     hold off
 
     %% Question 3
-    
+    figure
+    hold on
+    for i = 1:100
+        Vi = Vl + (Vh - Vl)*rand(1);
+        Gam_i = Gam_l + (Gam_h - Gam_l)*rand(1);
+        xoi		=	[Vi;Gam_i;H;R];
+	    [ti,xi]	=	ode23('EqMotion',tspan,xoi);
+        plot(xi(:,4),xi(:,3), 'k-') %Plot a grey line
+    end
+    xlabel('Range, m'), ylabel('Height, m'), grid
+    title('Varying Velocity 100x', 'FontSize', 12);
+    hold off
+
+    % subplot(2,1,2)
+    % hold on
+    % for i = 1:100
+    %     Gam_i = Gam_l + (Gam_h - Gam_l)*rand(1);
+    %     xoi		=	[Vn;Gam_i;H;R];
+	%     [ti,xi]	=	ode23('EqMotion',tspan,xoi);
+    %     plot(xi(:,4),xi(:,3), 'k-') %Plot a grey line
+    % end
+    % xlabel('Range, m'), ylabel('Height, m'), grid
+    % title('Varying Flight Path Angle 100x', 'FontSize', 12);
+    % hold off
+
+    % V = Vl + (Vh - Vl)*rand(1)
+    % V = 2 + (7.5 - 2)
 
