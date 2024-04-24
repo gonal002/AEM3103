@@ -54,16 +54,22 @@
     % Plot 2
     figure
 	subplot(2,1,1)
-    plot(xa(:,4),xa(:,3),xb(:,4),xb(:,3),xc(:,4),xc(:,3))
+    hold on
+    plot(xa(:,4),xa(:,3), 'k-')
+    plot(xb(:,4),xb(:,3), 'r-')
+    plot(xc(:,4),xc(:,3), 'g-')
     xlabel('Range, m'), ylabel('Height, m'), grid
     title('Varying Velocity', 'FontSize', 12);
-    %% Change colors of different velocities
+    hold off
 
     subplot(2,1,2)
-    plot(xd(:,4),xd(:,3),xe(:,4),xe(:,3),xg(:,4),xg(:,3))
+    hold on
+    plot(xd(:,4),xd(:,3), 'k-')
+    plot(xe(:,4),xe(:,3), 'r-')
+    plot(xg(:,4),xg(:,3), 'g-')
     xlabel('Range, m'), ylabel('Height, m'), grid
     title('Varying Flight Path Angle', 'FontSize', 12);
-    %% Change colors of different velocities
+    hold off
 
     %% Question 3
     
