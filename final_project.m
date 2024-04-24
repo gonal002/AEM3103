@@ -22,7 +22,7 @@
 	R		=	0;			% R_0 [m]
 	to		=	0;			% t_0 [sec]
 	tf		=	6;			% t_f [sec]
-	tspan	=	[to tf];
+	tspan	=	to:0.01:tf;
     
     % Same Flight path angle, varying velocity
     Gam = -0.18;
@@ -82,8 +82,10 @@
         plot(xi(:,4),xi(:,3), 'k-') %Plot a grey line
     end
     xlabel('Range, m'), ylabel('Height, m'), grid
-    title('Varying Velocity 100x', 'FontSize', 12);
+    title('Varying Velocity & Flight Path Angle 100x', 'FontSize', 12);
     hold off
+
+
 
     % subplot(2,1,2)
     % hold on
