@@ -74,8 +74,9 @@
     %% Question 3
     figure
     hold on
-    altitudes = zeros(length(tspan), 100); 
-    ranges = zeros(length(tspan), 100);
+    altitudes = 0; 
+    ranges = 0;
+    times = 0;
 
     for i = 1:100
         Vi = Vl + (Vh - Vl)*rand(1);
@@ -83,33 +84,60 @@
         xoi	= [Vi;Gam_i;H;R];
 	    [ti,xi]	= ode23('EqMotion',tspan,xoi);
         plot(xi(:,4),xi(:,3), 'k--')
-        altitudes(:, i) = xi(:,3);
-        ranges(:, i) = xi(:,4);
+        altitudes = cat(1, altitudes, xi(:,3));
+        ranges = cat(1, ranges, xi(:,4));
+        times = cat(1, times, ti);
     end
     xlabel('Range, m'), ylabel('Height, m'), grid
     title('Varying Velocity & Flight Path Angle 100x', 'FontSize', 12);
 
     %% Question 4
-    sum_alt = 0;
-    sum_ran = 0;
-    avg_altitudes = zeros(1, length(tspan));
-    avg_ranges = zeros(1, length(tspan));
-    for i = 1:length(tspan)
-        for j = 1:100
-            sum_alt = sum_alt + altitudes(i, j);
-            sum_ran = sum_ran + ranges(i, j);
-        end
-        avg_altitudes(i) = sum_alt/100;
-        avg_ranges(i) = sum_ran/100;
-        sum_alt = 0;
-        sum_ran = 0;
-    end
+    x = times;
+    y = altitudes;
+    p = polyfit(x, y, 5);
+    y_fit = polyval(p, tspan);
 
-    t = tspan.';
-    avgs = zeros(length(tspan), 3);
-    avgs(:, 1) = tspan;
-    avgs(:, 2) = avg_altitudes;
-    avgs(:, 3) = avg_ranges;
+    figure
+    title('Fitting Simulation Data to 5th order Polynomial')
+    subplot(2,1,1)
+    plot(tspan, y_fit, 'g-')
+    xlabel('Time [s]')
+    ylabel('Height [m]')
+
+    y = ranges;
+    p = polyfit(x, y, 5);
+    y_fit = polyval(p, tspan);
+
+    subplot(2,1,2)
+    plot(tspan, y_fit, 'r-')
+    xlabel('Time [s]')
+    ylabel('Range [m]')
+   
+    %% Question 5
     
-    plot(avg_ranges, avg_altitudes, 'm-', 'LineWidth', 2)
-    hold off
+
+
+
+    % sum_alt = 0;
+    % sum_ran = 0;
+    % avg_altitudes = zeros(1, length(tspan));
+    % avg_ranges = zeros(1, length(tspan));
+    % for i = 1:length(tspan)
+    %     for j = 1:100
+    %         sum_alt = sum_alt + altitudes(i, j);
+    %         sum_ran = sum_ran + ranges(i, j);
+    %     end
+    %     avg_altitudes(i) = sum_alt/100;
+    %     avg_ranges(i) = sum_ran/100;
+    %     sum_alt = 0;
+    %     sum_ran = 0;
+    % end
+
+    % t = tspan.';
+    % avgs = zeros(length(tspan), 3);
+    % avgs(:, 1) = tspan;
+    % avgs(:, 2) = avg_altitudes;
+    % avgs(:, 3) = avg_ranges;
+    
+    % plot(avg_ranges, avg_altitudes, 'm-', 'LineWidth', 2)
+    % hold off
