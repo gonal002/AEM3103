@@ -19,7 +19,7 @@
 	
 %%	a) Equilibrium Glide at Maximum Lift/Drag Ratio -- Question 2
 	H		=	2;			% h_0 [m]
-	R		=	0;			% R_0 [m]
+    R		=	0;			% R_0 [m]
 	to		=	0;			% t_0 [sec]
 	tf		=	6;			% t_f [sec]
 	tspan	=	to:0.01:tf;
@@ -74,31 +74,42 @@
     %% Question 3
     figure
     hold on
+    altitudes = zeros(length(tspan), 100); 
+    ranges = zeros(length(tspan), 100);
+
     for i = 1:100
         Vi = Vl + (Vh - Vl)*rand(1);
         Gam_i = Gam_l + (Gam_h - Gam_l)*rand(1);
-        xoi		=	[Vi;Gam_i;H;R];
-	    [ti,xi]	=	ode23('EqMotion',tspan,xoi);
-        plot(xi(:,4),xi(:,3), 'k-') %Plot a grey line
+        xoi	= [Vi;Gam_i;H;R];
+	    [ti,xi]	= ode23('EqMotion',tspan,xoi);
+        plot(xi(:,4),xi(:,3), 'k--')
+        altitudes(:, i) = xi(:,3);
+        ranges(:, i) = xi(:,4);
     end
     xlabel('Range, m'), ylabel('Height, m'), grid
     title('Varying Velocity & Flight Path Angle 100x', 'FontSize', 12);
+
+    %% Question 4
+    sum_alt = 0;
+    sum_ran = 0;
+    avg_altitudes = zeros(1, length(tspan));
+    avg_ranges = zeros(1, length(tspan));
+    for i = 1:length(tspan)
+        for j = 1:100
+            sum_alt = sum_alt + altitudes(i, j);
+            sum_ran = sum_ran + ranges(i, j);
+        end
+        avg_altitudes(i) = sum_alt/100;
+        avg_ranges(i) = sum_ran/100;
+        sum_alt = 0;
+        sum_ran = 0;
+    end
+
+    t = tspan.';
+    avgs = zeros(length(tspan), 3);
+    avgs(:, 1) = tspan;
+    avgs(:, 2) = avg_altitudes;
+    avgs(:, 3) = avg_ranges;
+    
+    plot(avg_ranges, avg_altitudes, 'm-', 'LineWidth', 2)
     hold off
-
-
-
-    % subplot(2,1,2)
-    % hold on
-    % for i = 1:100
-    %     Gam_i = Gam_l + (Gam_h - Gam_l)*rand(1);
-    %     xoi		=	[Vn;Gam_i;H;R];
-	%     [ti,xi]	=	ode23('EqMotion',tspan,xoi);
-    %     plot(xi(:,4),xi(:,3), 'k-') %Plot a grey line
-    % end
-    % xlabel('Range, m'), ylabel('Height, m'), grid
-    % title('Varying Flight Path Angle 100x', 'FontSize', 12);
-    % hold off
-
-    % V = Vl + (Vh - Vl)*rand(1)
-    % V = 2 + (7.5 - 2)
-
