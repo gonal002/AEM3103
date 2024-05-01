@@ -93,30 +93,42 @@
 
     %% Question 4
     x = times;
-    y = altitudes;
-    p = polyfit(x, y, 5);
-    y_fit = polyval(p, tspan);
+    a = altitudes;
+    ph = polyfit(x, a, 5);
+    h_y_fit = polyval(ph, tspan);
 
     figure
     title('Fitting Simulation Data to 5th order Polynomial')
     subplot(2,1,1)
-    plot(tspan, y_fit, 'g-')
+    plot(tspan, h_y_fit, 'g-')
     xlabel('Time [s]')
     ylabel('Height [m]')
 
-    y = ranges;
-    p = polyfit(x, y, 5);
-    y_fit = polyval(p, tspan);
+    r = ranges;
+    pr = polyfit(x, r, 5);
+    r_y_fit = polyval(pr, tspan);
 
     subplot(2,1,2)
-    plot(tspan, y_fit, 'r-')
+    plot(tspan, r_y_fit, 'r-')
     xlabel('Time [s]')
     ylabel('Range [m]')
    
     %% Question 5
-    
+    d_h = polyder(ph);
+    d_r = polyder(pr);
+    der_h = polyval(d_h, tspan);
+    der_r = polyval(d_r, tspan);
 
+    figure
+    subplot(2,1,1)
+    plot(tspan, der_h)
+    xlabel('Time [s]')
+    ylabel('Change in Height [m/s]')
 
+    subplot(2,1,2)
+    plot(tspan, der_r)
+    xlabel('Time [s]')
+    ylabel('Ground Speed [m/s]')
 
     % sum_alt = 0;
     % sum_ran = 0;
