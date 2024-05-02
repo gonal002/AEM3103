@@ -6,7 +6,7 @@
   ## Summary of Findings
 
   # Code Listing
-  - [EqMotion.m](https://github.com/gonal002/AEM3103/EqMotion.m) --> 
+  - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> 
   - PaperPlane.m --> Original code from study
   - final_project.m --> Adapted PaperPlane.m to calculate the desired simulations
 
