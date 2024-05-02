@@ -125,12 +125,12 @@
     der_r = polyval(d_r, tspan);
 
     figure
-    %title
     %subtitle
     subplot(2,1,1)
     plot(tspan, der_h)
     xlabel('Time [s]')
-    ylabel('Change in Height [m/s]')
+    ylabel('Climb rate [m/s]')
+    title('Time Derivatives', 'FontSize', 13)
 
     subplot(2,1,2)
     plot(tspan, der_r)
