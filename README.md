@@ -6,7 +6,7 @@
   ## Summary of Findings
 
   # Code Listing
-  - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> 
+  - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> Fourth-Order Equations of Aircraft Motion
   - [PaperPlane.m](https://github.com/gonal002/AEM3103/blob/4e11cbc5770e34cbc52dfcc1889a9921612532f1/PaperPlane.m) --> Original code from study
   - [final_project.m](https://github.com/gonal002/AEM3103/blob/0aba278d9aaa581f2f4b4300cc929e7bbf92dc80/final_project.m) --> Adapted PaperPlane.m to calculate the desired simulations
 
@@ -22,7 +22,7 @@
 
   This figure contains 100 plots of flight trjectories that vary both Gamma(Flight Path Angle) and Velocity in the bounds defined on the previous plot. It contains too a majenta plot that is a polynomial of 4th order fitted using the 'polyfit' MATLAB command. 
 
- ## Fig. 3: Time Derivatives
- <Time-derivative of height and range for the fitted trajectory>
+  ## Fig. 3: Time Derivatives 
+  ![time_derivatives](https://github.com/gonal002/AEM3103/assets/167819730/9e6a9d83-55ac-4179-b143-50a16467fc3b)
 
-  Briefly describe what is being shown in the figure.
+ Briefly describe what is being shown in the figure.
