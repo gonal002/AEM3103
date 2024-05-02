@@ -58,7 +58,7 @@
     plot(xa(:,4),xa(:,3), 'k-')
     plot(xb(:,4),xb(:,3), 'r-')
     plot(xc(:,4),xc(:,3), 'g-')
-    xlabel('Range, m'), ylabel('Height, m'), grid
+    xlabel('Range [m]'), ylabel('Height [m]'), grid
     title('Varying Velocity', 'FontSize', 12);
     hold off
 
@@ -67,7 +67,7 @@
     plot(xd(:,4),xd(:,3), 'k-')
     plot(xe(:,4),xe(:,3), 'r-')
     plot(xg(:,4),xg(:,3), 'g-')
-    xlabel('Range, m'), ylabel('Height, m'), grid
+    xlabel('Range, [m]'), ylabel('Height, [m]'), grid
     title('Varying Flight Path Angle', 'FontSize', 12);
     hold off
 
@@ -82,14 +82,17 @@
         Vi = Vl + (Vh - Vl)*rand(1);
         Gam_i = Gam_l + (Gam_h - Gam_l)*rand(1);
         xoi	= [Vi;Gam_i;H;R];
-	    [ti,xi]	= ode23('EqMotion',tspan,xoi);
-        plot(xi(:,4),xi(:,3), 'k--')
+	    [ti,xi]	= ode23('EqMotion',tspan,xoi);    
+        plot(xi(:,4),xi(:,3), 'Color', [0.5, 0.5, 0.5, 0.6])
         altitudes = cat(1, altitudes, xi(:,3));
         ranges = cat(1, ranges, xi(:,4));
         times = cat(1, times, ti);
     end
     xlabel('Range, m'), ylabel('Height, m'), grid
-    title('Varying Velocity & Flight Path Angle 100x', 'FontSize', 12);
+    title('Monte Carlo Simulation', 'FontSize', 14)
+    subtitle('Varying Velocity & Flight Path Angle 100x')
+
+
 
     %% Question 4
     x = times;
@@ -97,22 +100,24 @@
     ph = polyfit(x, a, 5);
     h_y_fit = polyval(ph, tspan);
 
-    figure
-    title('Fitting Simulation Data to 5th order Polynomial')
-    subplot(2,1,1)
-    plot(tspan, h_y_fit, 'g-')
-    xlabel('Time [s]')
-    ylabel('Height [m]')
-
     r = ranges;
     pr = polyfit(x, r, 5);
     r_y_fit = polyval(pr, tspan);
+    
+    plot(r_y_fit, h_y_fit, 'm.-')
 
-    subplot(2,1,2)
-    plot(tspan, r_y_fit, 'r-')
-    xlabel('Time [s]')
-    ylabel('Range [m]')
-   
+    % figure
+    % title('Fitting Simulation Data to 5th order Polynomial')
+    % subplot(2,1,1)
+    % plot(tspan, h_y_fit, 'g-')
+    % xlabel('Time [s]')
+    % ylabel('Height [m]')
+    % 
+    % subplot(2,1,2)
+    % plot(tspan, r_y_fit, 'r-')
+    % xlabel('Time [s]')
+    % ylabel('Range [m]')
+
     %% Question 5
     d_h = polyder(ph);
     d_r = polyder(pr);
@@ -120,6 +125,8 @@
     der_r = polyval(d_r, tspan);
 
     figure
+    %title
+    %subtitle
     subplot(2,1,1)
     plot(tspan, der_h)
     xlabel('Time [s]')
