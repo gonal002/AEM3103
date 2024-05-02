@@ -8,7 +8,7 @@
   # Code Listing
   - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> 
   - [PaperPlane.m](https://github.com/gonal002/AEM3103/blob/4e11cbc5770e34cbc52dfcc1889a9921612532f1/PaperPlane.m) --> Original code from study
-  - final_project.m --> Adapted PaperPlane.m to calculate the desired simulations
+  - [final_project.m](https://github.com/gonal002/AEM3103/blob/0aba278d9aaa581f2f4b4300cc929e7bbf92dc80/final_project.m) --> Adapted PaperPlane.m to calculate the desired simulations
 
   # Figures
 
