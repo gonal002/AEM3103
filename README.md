@@ -4,6 +4,11 @@
   - By: Rafaela Goncalves da Silva
 
   ## Summary of Findings
+  **Flight Path Varying Initial Velocity:**
+  |                | V_0 = 2 [m/s] | V_0 = 3.55 [m/s] | V_0 = 7.5 [m/s] |
+  :---------------:|:-------------:|:----------------:|:--------------:
+  | Max Height [m] |     2.00      |       2.00       |     3.58      
+  | Max Range [m]  |     20.6      |       20.9       |     19.5     
 
   # Code Listing
   - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> Fourth-Order Equations of Aircraft Motion
