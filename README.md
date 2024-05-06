@@ -15,6 +15,8 @@
   :---------------:|:-------------:|:----------------:|:--------------:
   | Max Height [m] |       2.00       |       2.00        |     2.55      
   | Max Range [m]  |       21.1       |       20.9        |     20.3     
+
+  - As seen above, as V and Gamma increases, max Height or maintains the same (start point) or gets higher. Now, for Range, the sweet spot (Max Range) is both at the nominal force and Gamma, and if you deviate from that, range will decrease.
   
   # Code Listing
   - [EqMotion.m](https://github.com/gonal002/AEM3103/blob/adf1484c6375420a543d85aa3ff47d8254ffd786/EqMotion.m) --> Fourth-Order Equations of Aircraft Motion
