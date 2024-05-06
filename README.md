@@ -36,4 +36,4 @@
   ## Fig. 3: Time Derivatives 
   ![time_derivatives](https://github.com/gonal002/AEM3103/assets/167819730/9e6a9d83-55ac-4179-b143-50a16467fc3b)
 
- Briefly describe what is being shown in the figure.
+ This is a graph of vertical and horizontal velocity of the polynomial fit from past calculation. Got it by taking the time derivative of both range and altitude values.
